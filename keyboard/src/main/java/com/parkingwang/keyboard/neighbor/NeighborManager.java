@@ -177,7 +177,7 @@ public class NeighborManager {
                 return p;
             }
         }
-        return new Province("", "");
+        return new Province("beijing", "beijing");
     }
 
     private void bind(Province... provinces) {

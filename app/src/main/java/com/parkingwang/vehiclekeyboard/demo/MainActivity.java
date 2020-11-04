@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mTestNumber.add("WJ粤12");
         mTestNumber.add("湘E123456");
 
+        mInputView.set8thVisibility(true);
         // 创建弹出键盘
         mPopupKeyboard = new PopupKeyboard(this);
         // 弹出键盘内部包含一个KeyboardView，在此绑定输入两者关联。
@@ -155,6 +156,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.show_dialog:
                 new VehicleDialog().show(getSupportFragmentManager());
+
+                break;
+            case R.id.btn_show_car_input:
+
+                break;
         }
     }
 }

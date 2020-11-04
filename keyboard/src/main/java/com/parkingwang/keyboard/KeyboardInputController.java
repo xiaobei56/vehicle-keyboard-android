@@ -50,12 +50,8 @@ public class KeyboardInputController {
                 if (mDebugEnabled) {
                     Log.w(TAG, "点击输入框更新键盘, 号码：" + number + "，序号：" + index);
                 }
-                // 除非锁定新能源类型，否则都让引擎自己检测车牌类型
-                if (mLockedOnNewEnergyType) {
-                    mKeyboardView.update(number, index, false, NumberType.NEW_ENERGY);
-                } else {
-                    mKeyboardView.update(number, index, false, NumberType.AUTO_DETECT);
-                }
+                mKeyboardView.update(number, index, false, NumberType.NEW_ENERGY);
+
             }
         });
 
@@ -187,10 +183,11 @@ public class KeyboardInputController {
 
     /**
      * 设置是否在新能源和普通车牌切换的时候校验规则
+     *
      * @param verify 是否校验
      * @return KeyboardInputController
      */
-    public KeyboardInputController setSwitchVerify(boolean verify){
+    public KeyboardInputController setSwitchVerify(boolean verify) {
         mSwitchVerify = verify;
         return this;
     }
@@ -211,7 +208,7 @@ public class KeyboardInputController {
     private void updateInputViewItemsByNumberType(NumberType type) {
         // 如果检测到的车牌号码为新能源、地方武警，需要显示第8位车牌
         final boolean show;
-        if (NumberType.NEW_ENERGY.equals(type) || NumberType.WJ2012.equals(type) || mLockedOnNewEnergyType) {
+        if (NumberType.NEW_ENERGY.equals(type) || mLockedOnNewEnergyType) {
             show = true;
         } else {
             show = false;
@@ -249,7 +246,6 @@ public class KeyboardInputController {
     private void triggerLockEnergyType(boolean completed) {
         if (!mSwitchVerify || Texts.isNewEnergyType(mInputView.getNumber())) {
             mLockedOnNewEnergyType = true;
-            mMessageHandler.onMessageTip(R.string.pwk_now_is_energy);
             updateInputViewItemsByNumberType(NumberType.NEW_ENERGY);
             if (completed) {
                 mInputView.performNextFieldView();

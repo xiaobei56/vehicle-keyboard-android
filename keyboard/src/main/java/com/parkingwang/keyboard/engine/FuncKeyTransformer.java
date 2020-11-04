@@ -1,8 +1,6 @@
 package com.parkingwang.keyboard.engine;
 
-import static com.parkingwang.keyboard.engine.VNumberChars.BACK;
 import static com.parkingwang.keyboard.engine.VNumberChars.DEL;
-import static com.parkingwang.keyboard.engine.VNumberChars.MORE;
 import static com.parkingwang.keyboard.engine.VNumberChars.OK;
 
 /**
@@ -25,17 +23,6 @@ public class FuncKeyTransformer implements LayoutMixer.KeyTransformer {
                 // 删除逻辑：当预设车牌号码不是空，则启用
                 enabled = (0 != context.presetNumber.length());
                 break;
-
-            case MORE:
-                text = "更多";
-                enabled = true;
-                break;
-
-            case BACK:
-                text = "返回";
-                enabled = true;
-                break;
-
             default:
                 text = key.text;
                 enabled = context.availableKeys.contains(key);

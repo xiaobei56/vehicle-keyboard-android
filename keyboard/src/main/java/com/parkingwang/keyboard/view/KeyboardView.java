@@ -176,13 +176,13 @@ public class KeyboardView extends LinearLayout {
                 }
                 break;
 
-            case FUNC_MORE:
-                update(mStashedNumber, mStashedIndex, true, mStashedNumberType);
-                break;
+//            case FUNC_MORE:
+//                update(mStashedNumber, mStashedIndex, true, mStashedNumberType);
+//                break;
 
-            case FUNC_BACK:
-                update(mStashedNumber, mStashedIndex, false, mStashedNumberType);
-                break;
+//            case FUNC_BACK:
+//                update(mStashedNumber, mStashedIndex, false, mStashedNumberType);
+//                break;
 
         }
     }

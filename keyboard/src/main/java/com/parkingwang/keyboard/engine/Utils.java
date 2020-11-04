@@ -2,9 +2,7 @@ package com.parkingwang.keyboard.engine;
 
 import java.util.Arrays;
 
-import static com.parkingwang.keyboard.engine.VNumberChars.BACK;
 import static com.parkingwang.keyboard.engine.VNumberChars.DEL;
-import static com.parkingwang.keyboard.engine.VNumberChars.MORE;
 import static com.parkingwang.keyboard.engine.VNumberChars.OK;
 
 /**
@@ -40,12 +38,6 @@ class Utils {
                 break;
             case OK:
                 keyType = KeyType.FUNC_OK;
-                break;
-            case MORE:
-                keyType = KeyType.FUNC_MORE;
-                break;
-            case BACK:
-                keyType = KeyType.FUNC_BACK;
                 break;
             default:
                 keyType = KeyType.GENERAL;
