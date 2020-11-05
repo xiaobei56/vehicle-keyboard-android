@@ -142,6 +142,7 @@ public class InputView extends LinearLayout {
         final Button selected = mFieldViewGroup.getFirstSelectedFieldOrNull();
         if (selected != null) {
             selected.setText(text);
+            selected.setTextSize(20);
             performNextFieldViewBy(selected);
         }
     }
@@ -151,10 +152,13 @@ public class InputView extends LinearLayout {
      */
     public void removeLastCharOfNumber() {
         final Button last = mFieldViewGroup.getLastFilledFieldOrNull();
-        if (last != null) {
+        if (last != null && last.getId() == mFieldViewGroup.getFieldAt(7).getId()) {
+            last.setText("新能源");
+            last.setTextSize(7);
+        } else if(last != null){
             last.setText(null);
-            performFieldViewSetToSelected(last);
         }
+        performFieldViewSetToSelected(last);
     }
 
     /**
@@ -278,11 +282,15 @@ public class InputView extends LinearLayout {
     }
 
     private void performFieldViewSetToSelected(Button target) {
+        if(target==null){
+            return;
+        }
         Log.d(TAG, "[== FastPerform ==] Btn.text: " + target.getText());
         // target.performClick();
         // 自动触发的，不要使用Android内部处理，太慢了。
         mOnFieldViewClickListener.onClick(target);
         setFieldViewSelected(target);
+
     }
 
     private void performNextFieldViewBy(Button current) {

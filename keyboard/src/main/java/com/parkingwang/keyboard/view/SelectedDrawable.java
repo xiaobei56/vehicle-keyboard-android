@@ -17,12 +17,12 @@ import android.support.annotation.Nullable;
  */
 public class SelectedDrawable extends Drawable {
 
-    protected float mRadius;
-    protected Rect mRect = new Rect();
-    protected Position mPosition = Position.FIRST;
     protected final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
     protected final Path mPath = new Path();
     protected final RectF mPathRectF = new RectF();
+    protected float mRadius;
+    protected Rect mRect = new Rect();
+    protected Position mPosition = Position.FIRST;
 
     public SelectedDrawable() {
         mPaint.setStyle(Paint.Style.STROKE);
@@ -56,19 +56,16 @@ public class SelectedDrawable extends Drawable {
         int right = mRect.right;
         int bottom = mRect.bottom - (int) strokeWidthOffset;
         final float[] radiusArray = new float[8];
-        if (mPosition == Position.FIRST) {
-            left += strokeWidthOffset;
-            radiusArray[0] = mRadius;
-            radiusArray[1] = mRadius;
-            radiusArray[6] = mRadius;
-            radiusArray[7] = mRadius;
-        } else if (mPosition == Position.LAST) {
-            right -= strokeWidthOffset;
-            radiusArray[2] = mRadius;
-            radiusArray[3] = mRadius;
-            radiusArray[4] = mRadius;
-            radiusArray[5] = mRadius;
-        }
+        left += strokeWidthOffset;
+        radiusArray[0] = mRadius;
+        radiusArray[1] = mRadius;
+        radiusArray[6] = mRadius;
+        radiusArray[7] = mRadius;
+        right -= strokeWidthOffset;
+        radiusArray[2] = mRadius;
+        radiusArray[3] = mRadius;
+        radiusArray[4] = mRadius;
+        radiusArray[5] = mRadius;
         mPath.reset();
         mPathRectF.set(left, top, right, bottom);
         mPath.addRoundRect(mPathRectF, radiusArray, Path.Direction.CW);

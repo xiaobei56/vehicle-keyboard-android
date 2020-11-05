@@ -97,7 +97,8 @@ abstract class FieldViewGroup {
             return false;
         }
         mFieldViews[7].setVisibility(View.VISIBLE);
-        mFieldViews[7].setText(null);
+        mFieldViews[7].setText("新能源");
+        mFieldViews[7].setTextSize(7);
         return true;
     }
 
@@ -122,7 +123,8 @@ abstract class FieldViewGroup {
         final Button[] fields = getAvailableFields();
         for (int i = fields.length - 1; i >= 0; i--) {
             if (!TextUtils.isEmpty(fields[i].getText())) {
-                return fields[i];
+                if (!fields[i].getText().equals("新能源"))
+                    return fields[i];
             }
         }
         return null;
@@ -152,10 +154,15 @@ abstract class FieldViewGroup {
         return 0;
     }
 
+    //  是否所有的框都有车牌号码
     public boolean isAllFieldsFilled() {
         for (Button field : getAvailableFields()) {
             if (TextUtils.isEmpty(field.getText())) {
                 return false;
+            } else {
+                if (field.getText().equals("新能源")) {
+                    return false;
+                }
             }
         }
         return true;
@@ -165,6 +172,13 @@ abstract class FieldViewGroup {
         final StringBuilder sb = new StringBuilder();
         for (Button field : getAvailableFields()) {
             sb.append(field.getText());
+        }
+        if (sb.length() >= 3) {
+            if (sb.substring(sb.length() - 3, sb.length()).equals("新能源")) {
+                return sb.substring(0, sb.length() - 3);
+            } else {
+                return sb.toString();
+            }
         }
         return sb.toString();
     }

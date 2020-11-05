@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2017. Xi'an iRain IOT Technology service CO., Ltd (ShenZhen). All Rights Reserved.
   -->
 
@@ -22,4 +21,7 @@
     <color name="pwk_primary_color">@color/pwk_keyboard_primary_color</color>
     <color name="pwk_primary_dark_color">@color/pwk_keyboard_primary_dark_color</color>
 
+
+    <color name="input_back_normal">#EEEEEE</color>
+    <color name="input_back_selected">#FF4B3B</color>
 </resources>

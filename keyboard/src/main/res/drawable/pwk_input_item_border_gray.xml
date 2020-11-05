@@ -13,6 +13,6 @@
         <solid android:color="@android:color/transparent"/>
         <stroke
             android:width="@dimen/pwk_input_view_border_width"
-            android:color="@color/pwk_border_gray"/>
+            android:color="@android:color/transparent"/>
     </shape>
 </inset>
